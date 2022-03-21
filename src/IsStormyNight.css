@@ -1,0 +1,10 @@
+.IsStormyNight{
+  background-image: 
+  url(
+"imgs/stormynight.jpeg");
+background-size: cover;
+height: 100vh;
+width: 100vw;
+margin: 0px;
+background-repeat:no-repeat;  
+}

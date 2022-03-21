@@ -1,0 +1,10 @@
+.IsSnowyNight{
+  background-image: 
+  url(
+"imgs/snowynight.jpeg");
+background-size: cover;
+height: 100vh;
+width: 100vw;
+margin: 0px;
+background-repeat:no-repeat;  
+}

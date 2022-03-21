@@ -11,6 +11,9 @@ import { Card } from "react-bootstrap";
 import './CurrentWeather.css'
 import { Image } from "react-bootstrap";
 import img from './imgs/weather-icon.png';
+import IsSunnyNight from "./IsSunnyNight";
+import IsStormyNight from "./IsStormyNight";
+import IsSnowyNight from "./IsSnowyNight";
 
 
 
@@ -31,6 +34,9 @@ function CurrentWeather(props){
   const [isSunny, setIsSunny] = useState(false)
   const [isStormy, setIsStormy] = useState(false)
   const [isSnowy, setIsSnowy] = useState(false)
+  const [isDay, setIsDay] = useState(false)
+
+  
   // These arrays split the codes that are recieved from the API in three catagories. I then use these arrays to determin which theme to displau
   const sunny = [1000, 1003]
   const snow = [1066, 1114, 1117, 1210, 1213, 1216, 1219, 1222, 1225, 1255, 1258, 1279, 1282, 1069, 1072, 1168, 1171, 1198, 1201, 1204, 1207, 1237, 1249, 1252, 1261, 1264]
@@ -50,6 +56,9 @@ function CurrentWeather(props){
       whatsTheWeather(data)
       //This will then hide the starter screen
       setIsLoading(false)
+      //this will set whether its day or night
+      data.data.current.is_day ? setIsDay(true): setIsDay(false)
+      
       })
       response.catch( err => console.log(err) )
     }
@@ -117,10 +126,16 @@ function CurrentWeather(props){
                     //If its false then you will get one of these 3 components
                     //The ones that is to be displayed is selected by short circuiting. 
                     //Whichever is 'true' is the one that will be displayed.
+                    //There is a day and night version of each one
                     <div>
-                      {isSunny && <IsSunny currCondition={currCondition} isSunny={isSunny} isSnowy={isSnowy} isStormy={isStormy}/>}
-                      {isStormy && <IsStormy currCondition={currCondition} isSunny={isSunny} isSnowy={isSnowy} isStormy={isStormy}/>}
-                      {isSnowy && <IsSnowy currCondition={currCondition} isSunny={isSunny} isSnowy={isSnowy} isStormy={isStormy}/>}
+
+                      {isSunny && isDay && <IsSunny currCondition={currCondition}/>}
+                      {isSunny && !isDay && <IsSunnyNight currCondition={currCondition}/>}
+                      {isStormy && isDay && <IsStormy currCondition={currCondition}/>}
+                      {isStormy && !isDay && <IsStormyNight currCondition={currCondition}/>}
+                      {isSnowy && isDay && <IsSnowy currCondition={currCondition}/>}
+                      {isSnowy && !isDay && <IsSnowyNight currCondition={currCondition}/>}
+
                     </div> 
   )
 }
