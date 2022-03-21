@@ -32,31 +32,28 @@ function CurrentWeather(props){
   const sunny = [1000, 1003]
   const snow = [1066, 1114, 1117, 1210, 1213, 1216, 1219, 1222, 1225, 1255, 1258, 1279, 1282, 1069, 1072, 1168, 1171, 1198, 1201, 1204, 1207, 1237, 1249, 1252, 1261, 1264]
   const stormy = [1030, 1063, 1150, 1153, 1180, 1183, 1186, 1189, 1192, 1195, 1240, 1243, 1246, 1135, 1147, 1087, 1273, 1276, 1006, 1009]
+  
   //This makes the AJAX request to the Weather API if props.search (the boolean passed in from the parent) is true
   useEffect(()=>{
-  if(props.search === true){
-  const getData = async () => {
-      try{
-      console.log('trying')
-      const response = await axios.get('http://api.weatherapi.com/v1/current.json', 
+    if(props.search === true){
+      const response = axios.get('http://api.weatherapi.com/v1/current.json', 
       {params: {key: '5b8e31f039824c07933145419222003', q: `${props.location}` }})
+      
+      response.then((data)=> {
       //The curent condition is now set to the object sent from the API
-      setCurrCondition(response)
+      setCurrCondition(data)
       //The function whatsTheWeather() is called which sets the values of isSunny, isSnowy, isStormy. 
       //These values are what will determine which child component is displayed
-      whatsTheWeather(response)
+      whatsTheWeather(data)
       //This will then hide the starter screen
       setIsLoading(false)
-      }  catch(error){
-        console.log(error)
-      }
+      })
+      response.catch( err => console.log(err) )
     }
-    getData()
-    //this will stop the AJAX request
     props.setSearch(false)
-  }
   })
-    
+
+
   
   //The function whatsTheWeather() sets the values of isSunny, isSnowy, isStormy. 
   //These values are what will determine which child component is displayed
