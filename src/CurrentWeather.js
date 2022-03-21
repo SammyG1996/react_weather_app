@@ -9,6 +9,9 @@ import { Row } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 import { Card } from "react-bootstrap";
 import './CurrentWeather.css'
+import { Image } from "react-bootstrap";
+import img from './imgs/weather-icon.png';
+
 
 
 
@@ -78,16 +81,29 @@ function CurrentWeather(props){
       //if 'isloading' is true you get the starter screen
       isloading ? <div className='isLoading'> 
                       <Container>
+
+                      <Row>
+                        <Col xs={4} md={5}></Col>
+
+                          <Col>
+                            <Image src={img} fluid className='mt-3'/>
+                          </Col>
+
+                        <Col xs={5} md={5}></Col>
+
+                      </Row>
+
                       <Row>
 
                         <Col xs={1}></Col>
 
                         <Col>
-                          <Card className="text-center mt-5 p-5">
+                          <Card className="text-center mt-3 p-5">
+                            
                             <Card.Body>
-                              <Card.Title><b>Hello!</b></Card.Title>
+                              <Card.Title><b>Welcome to My Weather!</b></Card.Title>
                               <Card.Text>
-                                Please Enter a Zip Code to Get the Weather
+                                To find the weather in your current area please enter your zip code above.
                               </Card.Text>
                             </Card.Body>
                           </Card>
@@ -102,9 +118,9 @@ function CurrentWeather(props){
                     //The ones that is to be displayed is selected by short circuiting. 
                     //Whichever is 'true' is the one that will be displayed.
                     <div>
-                      {isSunny && <IsSunny currCondition={currCondition}/>}
-                      {isStormy && <IsStormy currCondition={currCondition}/>}
-                      {isSnowy && <IsSnowy currCondition={currCondition}/>}
+                      {isSunny && <IsSunny currCondition={currCondition} isSunny={isSunny} isSnowy={isSnowy} isStormy={isStormy}/>}
+                      {isStormy && <IsStormy currCondition={currCondition} isSunny={isSunny} isSnowy={isSnowy} isStormy={isStormy}/>}
+                      {isSnowy && <IsSnowy currCondition={currCondition} isSunny={isSunny} isSnowy={isSnowy} isStormy={isStormy}/>}
                     </div> 
   )
 }

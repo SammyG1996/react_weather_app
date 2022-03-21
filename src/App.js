@@ -37,7 +37,7 @@ function App() {
               height="30"
               className="d-inline-block align-top"
             />{' '}
-          Weather App
+            My Weather
           </Navbar.Brand>
           <Nav> </Nav>
             {/* This is the form where you can submit the zip code */}
@@ -50,7 +50,7 @@ function App() {
                 onChange={(e)=> setLocation(e.target.value)}
               />
               {/* When the form is finally submitted the handlesubmit() function is called */}
-              <Button variant="outline-primary" onClick={handleSubmit}>Search</Button>
+              <Button variant="primary" onClick={handleSubmit}>Search</Button>
           </Form>
         </Container>
       </Navbar>
