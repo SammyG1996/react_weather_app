@@ -36,7 +36,7 @@ function CurrentWeather(props){
   //This makes the AJAX request to the Weather API if props.search (the boolean passed in from the parent) is true
   useEffect(()=>{
     if(props.search === true){
-      const response = axios.get('http://api.weatherapi.com/v1/current.json', 
+      const response = axios.get('https://api.weatherapi.com/v1/current.json', 
       {params: {key: '5b8e31f039824c07933145419222003', q: `${props.location}` }})
       
       response.then((data)=> {
