@@ -8,7 +8,7 @@ function IsSnowyNight(props){
   return(
     <div className="IsSnowyNight">
       {/* Then the wether card is called with the AJAX object passed to it */}
-      <WeatherCard currCondition={props.currCondition}/>
+      <WeatherCard currCondition={props.currCondition} isDay={props.isDay}/>
     </div>
   )
 }

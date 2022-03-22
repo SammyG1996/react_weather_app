@@ -129,12 +129,12 @@ function CurrentWeather(props){
                     //There is a day and night version of each one
                     <div>
 
-                      {isSunny && isDay && <IsSunny currCondition={currCondition}/>}
-                      {isSunny && !isDay && <IsSunnyNight currCondition={currCondition}/>}
+                      {isSunny && isDay && <IsSunny currCondition={currCondition} isDay={isDay}/>}
+                      {isSunny && !isDay && <IsSunnyNight currCondition={currCondition} isDay={isDay}/>}
                       {isStormy && isDay && <IsStormy currCondition={currCondition}/>}
-                      {isStormy && !isDay && <IsStormyNight currCondition={currCondition}/>}
-                      {isSnowy && isDay && <IsSnowy currCondition={currCondition}/>}
-                      {isSnowy && !isDay && <IsSnowyNight currCondition={currCondition}/>}
+                      {isStormy && !isDay && <IsStormyNight currCondition={currCondition} isDay={isDay}/>}
+                      {isSnowy && isDay && <IsSnowy currCondition={currCondition} isDay={isDay}/>}
+                      {isSnowy && !isDay && <IsSnowyNight currCondition={currCondition} isDay={isDay}/>}
 
                     </div> 
   )
