@@ -112,7 +112,7 @@ function CurrentWeather(props){
                             <Card.Body>
                               <Card.Title><b>Welcome to My Weather!</b></Card.Title>
                               <Card.Text>
-                                To find the weather in your current area please enter your zip code above.
+                                To find the weather in your current area please enter your City, State, and or Zip Code above.
                               </Card.Text>
                             </Card.Body>
                           </Card>

@@ -43,7 +43,7 @@ function App() {
             {/* This is the form where you can submit the zip code */}
             <Form className="d-flex justify-content-end" onSubmit={handleSubmit}>
               <FormControl
-                placeholder="Enter Zip Code"
+                placeholder="City, State, and/or Zip"
                 className="me-2"
                 aria-label="Search"
                 // Eveytime you type the locaton in state is changed
